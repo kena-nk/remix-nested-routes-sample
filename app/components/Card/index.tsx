@@ -6,11 +6,11 @@ import {
 } from '@chakra-ui/react'
 
 export type CardProps = {
-  title: string;
+  name: string;
   url: string;
 }
 
-export default function Index({title, url}: CardProps) {
+export default function Index({name, url}: CardProps) {
     return (
       <VStack
         spacing="0px"
@@ -32,7 +32,7 @@ export default function Index({title, url}: CardProps) {
             />
           </Box>
         <Text fontWeight="bold" p="16px">
-          {title}
+          {name}
         </Text>
       </VStack>
     )
