@@ -1,9 +1,9 @@
 import { Box } from '@chakra-ui/react';
 
-export default function Index() {
-  return (
-    <Box>
-      ぽけもんが表示されるよ
-    </Box>
-  );
-}
+const Index = () => (
+  <Box>
+    ぽけもんが表示されるよ
+  </Box>
+);
+
+export default Index;

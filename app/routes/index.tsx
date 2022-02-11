@@ -32,7 +32,7 @@ export const loader: LoaderFunction = async () => {
   return response;
 };
 
-export default function Index() {
+const Index = () => {
   const data = useLoaderData<CardProps[]>();
 
   return (
@@ -44,4 +44,6 @@ export default function Index() {
       ))}
     </Flex>
   );
-}
+};
+
+export default Index;
