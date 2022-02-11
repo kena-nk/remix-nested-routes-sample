@@ -36,6 +36,10 @@ module.exports = {
     'react/no-array-index-key': 'off',
     // propsにスプレッド演算子で渡すことを許可する
     'react/jsx-props-no-spreading': 'off',
+    // コンポーネントをアロー関数で定義することを許可する
+    'react/function-component-definition': [2, {
+      namedComponents: 'arrow-function',
+    }],
 
     // import時に拡張子が不要
     'import/extensions': [0, 'never'],
