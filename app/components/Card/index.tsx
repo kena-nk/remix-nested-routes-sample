@@ -3,6 +3,7 @@ import {
     Text,
     VStack,
     Image,
+    HStack,
 } from '@chakra-ui/react'
 
 export type CardProps = {
@@ -24,12 +25,17 @@ export default function Index({name, url}: CardProps) {
           pb="4px"
           bg="yellow.100"
         >
-          <Image
-            src={url}
-            w="100%"
+          <HStack
             h="300px"
-            objectFit="contain"
+            w="300px"
+          >
+            <Image
+              src={url}
+              w="100%"
+              h="200px"
+              objectFit="contain"
             />
+            </HStack>
           </Box>
         <Text fontWeight="bold" p="16px">
           {name}

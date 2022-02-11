@@ -1,9 +1,51 @@
-import { Box } from '@chakra-ui/react'
+import {
+    Box,
+    Flex,
+    Text,
+  } from '@chakra-ui/react'
+  import Card from '../components/Card';
+  import type { CardProps } from '../components/Card';
+  import { useLoaderData, LoaderFunction } from 'remix';
 
-export default function Index() {
+  export let loader: LoaderFunction = async () => {
+    let urls = [];
+    let data:any[] = [];
+
+    for (let i = 1; i < 100; i++) {
+      const url = `https://pokeapi.co/api/v2/item/${i}`;
+      urls.push(url)
+    }
+
+    const getRequest = async (url: string) => {
+      const response = await fetch(url);
+      console.log('hoge')
+      return response.json();
+    };
+
+    const requests = urls.map(url => getRequest(url));
+
+
+    await Promise.all(requests).then((responses) => data.push(responses))
+
+    const response = data[0]?.map((item: any) => ({
+      name: item.name,
+      url: item.sprites.default
+    }))
+    return response;
+  };
+
+  export default function Index() {
+    const data = useLoaderData<CardProps[]>();
+
     return (
-        <Box>
-            アイテムが表示されるよ
-        </Box>
-    )
-}
+      <Flex wrap="wrap" py="24px">
+        {data?.map((item, index) =>
+          (
+            <Box key={index} mx="8px" mb="16px">
+              <Card {...item} />
+            </Box>
+          )
+        )}
+      </Flex>
+    );
+  }

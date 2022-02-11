@@ -18,10 +18,12 @@ export let loader: LoaderFunction = async () => {
 
   const getRequest = async (url: string) => {
     const response = await fetch(url);
+    console.log('hoge')
     return response.json();
   };
 
   const requests = urls.map(url => getRequest(url));
+
 
   await Promise.all(requests).then((responses) => data.push(responses))
 
@@ -39,7 +41,7 @@ export default function Index() {
     <Flex wrap="wrap" py="24px">
       {data?.map((item, index) =>
         (
-          <Box key={index} mr="16px" mb="16px">
+          <Box key={index} mx="8px" mb="16px">
             <Card {...item} />
           </Box>
         )
