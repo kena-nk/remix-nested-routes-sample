@@ -1,58 +1,17 @@
 import {
-  Box,
-  Flex,
 } from '@chakra-ui/react';
 import {
-  useLoaderData,
-  LoaderFunction,
-  Link,
-  Outlet,
+  useNavigate,
 } from 'remix';
-import Card from '../components/Card';
-import type { CardProps } from '../components/Card';
-
-export const loader: LoaderFunction = async () => {
-  const urls = [];
-  const data:any[] = [];
-
-  for (let i = 1; i < 100; i++) {
-    const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-    urls.push(url);
-  }
-
-  const getRequest = async (url: string) => {
-    const response = await fetch(url);
-    return response.json();
-  };
-
-  const requests = urls.map((url) => getRequest(url));
-
-  await Promise.all(requests).then((responses) => data.push(responses));
-
-  const response = data[0]?.map((item: any) => ({
-    name: item.name,
-    url: item.sprites.front_default,
-  }));
-  return response;
-};
+import { useEffect } from 'react';
 
 const Index = () => {
-  const data = useLoaderData<CardProps[]>();
+  const navigate = useNavigate();
 
-  return (
-    <Flex>
-      <Flex wrap="wrap" py="24px">
-        {data?.map((item, index) => (
-          <Link key={index} to={String(index + 1)}>
-            <Box mx="8px" mb="16px">
-              <Card {...item} />
-            </Box>
-          </Link>
-        ))}
-      </Flex>
-      <Outlet />
-    </Flex>
-  );
+  useEffect(() => {
+    navigate('/pokemon');
+  }, []);
+  return null;
 };
 
 export default Index;
