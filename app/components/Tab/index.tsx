@@ -20,14 +20,15 @@ export default function index() {
   const tabLinks: TabType[] = [
     { id: 0, path: '/', title: 'Pokémon' },
     { id: 1, path: '/item', title: 'アイテム' },
-    { id: 2, path: '/location', title: '場所' },
   ];
-  const selectedItemId = tabLinks.find((item) => item.path === location.pathname)?.id;
+  const selectedItemId = tabLinks.find(
+    (item) => item.path === location.pathname,
+  )?.id;
 
   const TabElement = ({ item }:{ item: TabType }) => (
     <Link to={item.path}>
       <Tab h="46px" w="100px">
-        <Text fontWeight="bold">{item.title}</Text>
+        <Text variant="dotBody2">{item.title}</Text>
       </Tab>
     </Link>
   );

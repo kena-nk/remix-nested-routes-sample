@@ -11,7 +11,7 @@ import {
 const Index = () => (
   <HStack spacing="0px" h="62px">
     <Link to="/">
-      <Text fontSize="30px" fontWeight="bold">
+      <Text variant="dotBody1" fontWeight="bold">
         PokeSample
       </Text>
     </Link>

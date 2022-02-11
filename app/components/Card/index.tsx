@@ -9,20 +9,25 @@ import {
 export type CardProps = {
   name: string;
   url: string;
+  isSelected: boolean;
 }
 
-const Index = ({ name, url }: CardProps) => (
+const Index = ({
+  name, url, isSelected,
+}: CardProps) => (
   <VStack
     spacing="0px"
     w="300px"
     h="360px"
+    bg={isSelected ? 'gray.200' : 'gray.50'}
     borderRadius="8px"
-    borderWidth="1px"
-    borderColor="gray.200"
+    _hover={{
+      bg: isSelected ? 'gray.200' : 'gray.100',
+      boxShadow: isSelected ? 'none' : '3px 5px 5px rgba(0, 0, 0, 0.25)',
+    }}
   >
     <Box
       pb="4px"
-      bg="yellow.100"
     >
       <HStack
         h="300px"
@@ -36,7 +41,7 @@ const Index = ({ name, url }: CardProps) => (
         />
       </HStack>
     </Box>
-    <Text fontWeight="bold" p="16px">
+    <Text variant="dotBody1" p="16px">
       {name}
     </Text>
   </VStack>

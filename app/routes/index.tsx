@@ -2,7 +2,12 @@ import {
   Box,
   Flex,
 } from '@chakra-ui/react';
-import { useLoaderData, LoaderFunction } from 'remix';
+import {
+  useLoaderData,
+  LoaderFunction,
+  Link,
+  Outlet,
+} from 'remix';
 import Card from '../components/Card';
 import type { CardProps } from '../components/Card';
 
@@ -17,7 +22,6 @@ export const loader: LoaderFunction = async () => {
 
   const getRequest = async (url: string) => {
     const response = await fetch(url);
-    console.log('hoge');
     return response.json();
   };
 
@@ -36,12 +40,17 @@ const Index = () => {
   const data = useLoaderData<CardProps[]>();
 
   return (
-    <Flex wrap="wrap" py="24px">
-      {data?.map((item, index) => (
-        <Box key={index} mx="8px" mb="16px">
-          <Card {...item} />
-        </Box>
-      ))}
+    <Flex>
+      <Flex wrap="wrap" py="24px">
+        {data?.map((item, index) => (
+          <Link key={index} to={String(index + 1)}>
+            <Box mx="8px" mb="16px">
+              <Card {...item} />
+            </Box>
+          </Link>
+        ))}
+      </Flex>
+      <Outlet />
     </Flex>
   );
 };

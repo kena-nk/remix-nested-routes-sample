@@ -1,8 +1,15 @@
 import {
   Box,
   Flex,
+  Spacer,
 } from '@chakra-ui/react';
-import { useLoaderData, LoaderFunction } from 'remix';
+import {
+  useLoaderData,
+  LoaderFunction,
+  Link,
+  Outlet,
+  useLocation,
+} from 'remix';
 import Card from '../components/Card';
 import type { CardProps } from '../components/Card';
 
@@ -17,7 +24,6 @@ export const loader: LoaderFunction = async () => {
 
   const getRequest = async (url: string) => {
     const response = await fetch(url);
-    console.log('hoge');
     return response.json();
   };
 
@@ -26,7 +32,7 @@ export const loader: LoaderFunction = async () => {
   await Promise.all(requests).then((responses) => data.push(responses));
 
   const response = data[0]?.map((item: any) => ({
-    name: item.name,
+    name: item.names[0].name,
     url: item.sprites.default,
   }));
   return response;
@@ -34,14 +40,22 @@ export const loader: LoaderFunction = async () => {
 
 const Index = () => {
   const data = useLoaderData<CardProps[]>();
+  const location = useLocation();
+  const isPage = location.pathname === '/item';
 
   return (
-    <Flex wrap="wrap" py="24px">
-      {data?.map((item, index) => (
-        <Box key={index} mx="8px" mb="16px">
-          <Card {...item} />
-        </Box>
-      ))}
+    <Flex>
+      <Flex wrap="wrap" py="24px" w={isPage ? '100%' : '83%'}>
+        {data?.map((item, index) => (
+          <Link key={index} to={String(index + 1)}>
+            <Box mx="8px" mb="16px">
+              <Card {...item} isSelected={location.pathname === `/item/${index + 1}`} />
+            </Box>
+          </Link>
+        ))}
+      </Flex>
+      <Spacer />
+      <Outlet />
     </Flex>
   );
 };
