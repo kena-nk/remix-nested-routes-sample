@@ -4,16 +4,14 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
-} from "remix";
-import type { MetaFunction } from "remix";
-import { ChakraProvider } from '@chakra-ui/react'
-import theme from './theme'
-import Template from './components/Template'
+  ScrollRestoration,
+} from 'remix';
+import type { MetaFunction } from 'remix';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from './theme';
+import Template from './components/Template';
 
-export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
-};
+export const meta: MetaFunction = () => ({ title: 'New Remix App' });
 
 export default function App() {
   return (
@@ -31,7 +29,7 @@ export default function App() {
           </Template>
           <ScrollRestoration />
           <Scripts />
-          {process.env.NODE_ENV === "development" && <LiveReload />}
+          {process.env.NODE_ENV === 'development' && <LiveReload />}
         </ChakraProvider>
       </body>
     </html>
