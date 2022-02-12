@@ -1,11 +1,8 @@
+import { useLoaderData, LoaderFunction } from 'remix';
 import {
   Box,
-  Text,
-  Image,
-  Flex,
 } from '@chakra-ui/react';
-import { useLoaderData, LoaderFunction, useNavigate } from 'remix';
-import { CloseIcon } from '@chakra-ui/icons';
+import { DescriptionCard } from '../../components/Card/DescriptionCard';
 
 type Data = {
   name: string;
@@ -26,42 +23,10 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 const Index = () => {
   const data = useLoaderData<Data>();
-  const navigate = useNavigate();
 
   return (
-    <Box
-      py="24px"
-      w="100%"
-      maxW="300px"
-      h="fit-content"
-    >
-      <Box
-        borderRadius="8px"
-        bg="gray.200"
-        pb="24px"
-        px="24px"
-      >
-        <Flex
-          justify="end"
-          cursor="pointer"
-          py="16px"
-          onClick={() => { navigate('/item'); }}
-        >
-          <CloseIcon />
-        </Flex>
-        <Box
-          mt="4px"
-        >
-          <Image
-            src={data.url}
-            w="100%"
-            h="100px"
-            objectFit="contain"
-          />
-          <Text variant="dotBody1">{data.name}</Text>
-          <Text variant="dotBody2" whiteSpace="pre-wrap">{data.description}</Text>
-        </Box>
-      </Box>
+    <Box position="fixed" right="40px">
+      <DescriptionCard {...data} navigatePath="/item" />
     </Box>
   );
 };

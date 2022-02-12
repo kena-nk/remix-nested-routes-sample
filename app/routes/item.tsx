@@ -10,7 +10,7 @@ import {
   Outlet,
   useLocation,
 } from 'remix';
-import Card from '../components/Card';
+import { BaseCard } from '../components/Card';
 import type { CardProps } from '../components/Card';
 
 export const loader: LoaderFunction = async () => {
@@ -49,7 +49,7 @@ const Index = () => {
         {data?.map((item, index) => (
           <Link key={index} to={String(index + 1)}>
             <Box mx="8px" mb="16px">
-              <Card {...item} isSelected={location.pathname === `/item/${index + 1}`} />
+              <BaseCard {...item} isSelected={location.pathname === `/item/${index + 1}`} />
             </Box>
           </Link>
         ))}

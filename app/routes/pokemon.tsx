@@ -8,7 +8,7 @@ import {
   Link,
   Outlet,
 } from 'remix';
-import Card from '../components/Card';
+import { BaseCard } from '../components/Card';
 import type { CardProps } from '../components/Card';
 
 export const loader: LoaderFunction = async () => {
@@ -45,7 +45,7 @@ const Index = () => {
         {data?.map((item, index) => (
           <Link key={index} to={`/pokemon/${String(index + 1)}`}>
             <Box mx="8px" mb="16px">
-              <Card {...item} />
+              <BaseCard {...item} />
             </Box>
           </Link>
         ))}
