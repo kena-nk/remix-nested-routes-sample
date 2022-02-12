@@ -10,10 +10,11 @@ export type CardProps = {
   name: string;
   url: string;
   isSelected: boolean;
+  imgHeight?: string;
 }
 
 export const BaseCard = ({
-  name, url, isSelected,
+  name, url, isSelected, imgHeight,
 }: CardProps) => (
   <VStack
     spacing="0px"
@@ -26,13 +27,14 @@ export const BaseCard = ({
       boxShadow: isSelected ? 'none' : '3px 5px 5px rgba(0, 0, 0, 0.25)',
     }}
   >
-    <Image
-      src={url}
-      w="100%"
-      h="200px"
-      objectFit="contain"
-    />
-    <Spacer />
+    <VStack spacing="0px" h="250px" justify="center">
+      <Image
+        src={url}
+        w="100%"
+        h={imgHeight || '200px'}
+        objectFit="contain"
+      />
+    </VStack>
     <Text pb="24px" variant="dotBody1">
       {name}
     </Text>

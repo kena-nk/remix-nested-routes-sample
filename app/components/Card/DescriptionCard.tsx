@@ -23,13 +23,13 @@ export const DescriptionCard = ({
     <Box
       py="24px"
       w="320px"
-      h="fit-content"
     >
       <Box
         borderRadius="8px"
         bg="gray.200"
         pb="24px"
         px="24px"
+        h="calc(100vh - (108px + 24px + 24px))"
       >
         <Flex
           justify="end"
