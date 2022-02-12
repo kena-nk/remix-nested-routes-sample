@@ -1,6 +1,5 @@
 import {
   HStack,
-  Avatar,
   Text,
   Spacer,
 } from '@chakra-ui/react';
@@ -12,23 +11,10 @@ const Index = () => (
   <HStack spacing="0px" h="62px" bg="white">
     <Link to="/pokemon">
       <Text variant="dotBody1" fontWeight="bold">
-        PokeSample
+        ぽけもんずかん
       </Text>
     </Link>
     <Spacer />
-    <HStack
-      cursor="pointer"
-      bg="gray.200"
-      justify="center"
-      borderRadius="100%"
-    >
-      <Avatar
-        h="40px"
-        w="40px"
-        borderRadius="100%"
-        objectFit="contain"
-      />
-    </HStack>
   </HStack>
 );
 

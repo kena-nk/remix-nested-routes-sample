@@ -18,8 +18,8 @@ type TabType = {
 export default function index() {
   const location = useLocation();
   const tabLinks: TabType[] = [
-    { id: 0, path: '/pokemon', title: 'Pokémon' },
-    { id: 1, path: '/item', title: 'アイテム' },
+    { id: 0, path: '/pokemon', title: 'ぽけもん' },
+    { id: 1, path: '/item', title: 'あいてむ' },
   ];
   const selectedItemId = tabLinks.find(
     (item) => item.path === location.pathname,
