@@ -4,7 +4,7 @@ import {
   Image,
   Flex,
 } from '@chakra-ui/react';
-import { useNavigate } from 'remix';
+import { Link } from 'remix';
 import { CloseIcon } from '@chakra-ui/icons';
 
 export type CardProps = {
@@ -16,42 +16,39 @@ export type CardProps = {
 
 export const DescriptionCard = ({
   name, url, description, navigatePath,
-}: CardProps) => {
-  const navigate = useNavigate();
-
-  return (
+}: CardProps) => (
+  <Box
+    py="24px"
+    w="320px"
+  >
     <Box
-      py="24px"
-      w="320px"
+      borderRadius="8px"
+      bg="gray.200"
+      pb="24px"
+      px="24px"
+      h="calc(100vh - (108px + 24px + 24px))"
     >
-      <Box
-        borderRadius="8px"
-        bg="gray.200"
-        pb="24px"
-        px="24px"
-        h="calc(100vh - (108px + 24px + 24px))"
-      >
+      <Link to={navigatePath}>
         <Flex
           justify="end"
           cursor="pointer"
           py="16px"
-          onClick={() => { navigate(navigatePath); }}
         >
           <CloseIcon />
         </Flex>
-        <Box
-          mt="4px"
-        >
-          <Image
-            src={url}
-            w="100%"
-            h="100px"
-            objectFit="contain"
-          />
-          <Text variant="dotBody1">{name}</Text>
-          <Text variant="dotBody2" whiteSpace="pre-wrap">{description}</Text>
-        </Box>
+      </Link>
+      <Box
+        mt="4px"
+      >
+        <Image
+          src={url}
+          w="100%"
+          h="100px"
+          objectFit="contain"
+        />
+        <Text variant="dotBody1">{name}</Text>
+        <Text variant="dotBody2" whiteSpace="pre-wrap">{description}</Text>
       </Box>
     </Box>
-  );
-};
+  </Box>
+);

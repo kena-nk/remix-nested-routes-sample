@@ -46,7 +46,7 @@ const Index = () => {
     <Flex>
       <Flex wrap="wrap" py="24px" w={isPage ? '100%' : '83%'}>
         {data?.map((item, index) => (
-          <Link key={index} to={`/pokemon/${String(index + 1)}`}>
+          <Link prefetch="intent" key={index} to={`/pokemon/${String(index + 1)}`}>
             <Box mx="8px" mb="16px">
               <BaseCard {...item} />
             </Box>

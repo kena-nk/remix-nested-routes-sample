@@ -26,7 +26,7 @@ export default function index() {
   )?.id;
 
   const TabElement = ({ item }:{ item: TabType }) => (
-    <Link to={item.path}>
+    <Link prefetch="intent" to={item.path}>
       <Tab h="46px" w="100px">
         <Text variant="dotBody2">{item.title}</Text>
       </Tab>

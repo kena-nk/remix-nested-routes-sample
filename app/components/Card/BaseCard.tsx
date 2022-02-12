@@ -1,9 +1,7 @@
 import {
-  Box,
   Text,
   VStack,
   Image,
-  Spacer,
 } from '@chakra-ui/react';
 
 export type CardProps = {
