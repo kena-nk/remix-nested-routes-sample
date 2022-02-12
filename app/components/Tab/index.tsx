@@ -22,7 +22,7 @@ export default function index() {
     { id: 1, path: '/item', title: 'あいてむ' },
   ];
   const selectedItemId = tabLinks.find(
-    (item) => item.path === location.pathname,
+    (item) => item.path === location.pathname || location.pathname.match(item.path),
   )?.id;
 
   const TabElement = ({ item }:{ item: TabType }) => (
