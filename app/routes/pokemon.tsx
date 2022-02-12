@@ -7,6 +7,7 @@ import {
   LoaderFunction,
   Link,
   Outlet,
+  useLocation,
 } from 'remix';
 import { BaseCard } from '../components/Card';
 import type { CardProps } from '../components/Card';
@@ -38,10 +39,12 @@ export const loader: LoaderFunction = async () => {
 
 const Index = () => {
   const data = useLoaderData<CardProps[]>();
+  const location = useLocation();
+  const isPage = location.pathname === '/pokemon';
 
   return (
     <Flex>
-      <Flex wrap="wrap" py="24px">
+      <Flex wrap="wrap" py="24px" w={isPage ? '100%' : '83%'}>
         {data?.map((item, index) => (
           <Link key={index} to={`/pokemon/${String(index + 1)}`}>
             <Box mx="8px" mb="16px">
