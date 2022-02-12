@@ -9,7 +9,7 @@ import {
 } from 'remix';
 
 const Index = () => (
-  <HStack spacing="0px" h="62px">
+  <HStack spacing="0px" h="62px" bg="white">
     <Link to="/pokemon">
       <Text variant="dotBody1" fontWeight="bold">
         PokeSample

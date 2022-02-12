@@ -34,7 +34,7 @@ export default function index() {
   );
 
   return (
-    <Tabs colorScheme="red" defaultIndex={selectedItemId}>
+    <Tabs colorScheme="red" defaultIndex={selectedItemId} bg="white">
       <TabList>
         {tabLinks.map((item) => (<TabElement key={item.id} item={item} />))}
       </TabList>
