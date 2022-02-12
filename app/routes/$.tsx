@@ -1,7 +1,4 @@
 import {
-  Box,
-  Flex,
-  Spacer,
   VStack,
   Button,
   Text,
