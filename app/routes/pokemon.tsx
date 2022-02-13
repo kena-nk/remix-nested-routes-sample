@@ -48,7 +48,7 @@ const Index = () => {
         {data?.map((item, index) => (
           <Link prefetch="intent" key={index} to={`/pokemon/${String(index + 1)}`}>
             <Box mx="8px" mb="16px">
-              <BaseCard {...item} />
+              <BaseCard {...item} isSelected={location.pathname === `/pokemon/${index + 1}`} />
             </Box>
           </Link>
         ))}
