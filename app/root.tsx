@@ -7,7 +7,9 @@ import {
   ScrollRestoration,
 } from 'remix';
 import type { MetaFunction } from 'remix';
-import { ChakraProvider } from '@chakra-ui/react';
+import {
+  ChakraProvider,
+} from '@chakra-ui/react';
 import theme from './theme';
 import Template from './components/Template';
 
@@ -35,6 +37,15 @@ const App = () => (
       </ChakraProvider>
     </body>
   </html>
+);
+
+export const ErrorBoundary = ({ error }: { error: any }) => (
+  <div>
+    <h1>Error</h1>
+    <p>{error.message}</p>
+    <p>The stack trace is:</p>
+    <pre>{error.stack}</pre>
+  </div>
 );
 
 export default App;
